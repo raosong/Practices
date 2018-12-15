@@ -1,14 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Algorithms
 {
     public class BinarySearch
     {
-        public static int Search(int[] numbers, int target, int start, int end)
+        int[] numbers;
+
+        public BinarySearch(int[] numbers)
+        {
+            if (numbers == null)
+            {
+                throw new ArgumentNullException(nameof(numbers));
+            }
+
+            this.numbers = numbers;
+        }
+
+        public int Search(int target, bool recursive)
+        {
+            if (recursive)
+            {
+                return SearchRecursive(target, 0, this.numbers.Length - 1);
+            }
+            else
+            {
+                return SearchIterative(target);
+            }
+        }
+
+        private int SearchRecursive(int target, int start, int end)
         {
             if (start > end)
             {
@@ -16,39 +36,39 @@ namespace Algorithms
             }
 
             int mid = (start + end) / 2;
-            if (numbers[mid] == target)
+            if (this.numbers[mid] == target)
             {
                 return mid;
             }
             else
             {
-                if (numbers[mid] > target)
+                if (this.numbers[mid] > target)
                 {
-                    return Search(numbers, target, start, mid - 1);
+                    return this.SearchRecursive(target, start, mid - 1);
                 }
                 else
                 {
-                    return Search(numbers, target, mid + 1, end);
+                    return this.SearchRecursive(target, mid + 1, end);
                 }
             }
         }
 
-        public static int Search(int[] numbers, int target)
+        private int SearchIterative(int target)
         {
             int start = 0;
-            int end = numbers.Length - 1;
+            int end = this.numbers.Length - 1;
 
             while (start <= end)
             {
                 int mid = (start + end) / 2;
 
-                if (numbers[mid] > target)
+                if (this.numbers[mid] > target)
                 {
                     end = mid - 1;
                 }
                 else
                 {
-                    if (numbers[mid] < target)
+                    if (this.numbers[mid] < target)
                     {
                         start = mid + 1;
                     }
