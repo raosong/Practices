@@ -8,7 +8,7 @@ namespace Algorithms
 {
     public class BracketPairs
     {
-        // This is for iterative algorithm only
+        //This private class is used for iterative generation algorithm only.
         private class QueueItem
         {
             public int Left { get; private set; }
