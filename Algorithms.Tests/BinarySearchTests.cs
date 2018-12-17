@@ -8,7 +8,7 @@ namespace Algorithms.Tests
     public class BinarySearchTests
     {
         [TestMethod]
-        public void Recurive_Should_Pass()
+        public void BinarySearch_Recurive_Should_Pass()
         {
             int[] numbers = new int[] { 2, 3, 5, 7, 9, 10 };
             BinarySearch bs = new BinarySearch(numbers);
@@ -21,7 +21,7 @@ namespace Algorithms.Tests
         }
 
         [TestMethod]
-        public void Iterative_Should_Pass()
+        public void BinarySearch_Iterative_Should_Pass()
         {
             int[] numbers = new int[] { 2, 3, 5, 7, 9, 10 };
             BinarySearch bs = new BinarySearch(numbers);
@@ -34,7 +34,7 @@ namespace Algorithms.Tests
         }
 
         [TestMethod]
-        public void Empty_Should_Pass()
+        public void BinarySearch_Empty_Should_Pass()
         {
             int[] numbers = new int[] {};
             BinarySearch bs = new BinarySearch(numbers);
