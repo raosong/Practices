@@ -71,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinarySearchTests.cs" />
+    <Compile Include="FibTests.cs" />
+    <Compile Include="FactorialTests.cs" />
     <Compile Include="BracketPairsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

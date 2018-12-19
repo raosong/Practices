@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="BinarySearch\BinarySearch.cs" />
     <Compile Include="BracketPairs\BracketPairs.cs" />
+    <Compile Include="Factorial\Factorial.cs" />
+    <Compile Include="Fibonacii\Fib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
