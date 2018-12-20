@@ -9,7 +9,7 @@ namespace Algorithms.Tests
     public class FactorialTests
     {
         [TestMethod]
-        public void FactorialTests_Should_Generate_N_4()
+        public void Factorial_Should_Generate_N_4()
         {
             Factorial fact = new Factorial();
             int result = fact.Fact(4);
