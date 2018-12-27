@@ -76,6 +76,7 @@
     <Compile Include="BracketPairsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BinaryTreeTests.cs" />
+    <Compile Include="SingleListTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
