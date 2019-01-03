@@ -61,5 +61,32 @@ namespace Algorithms.Tests
             results.Contains("(()())").Should().BeTrue("results does not contain value (()()) with n = 3 in iterative");
             results.Contains("()()()").Should().BeTrue("results does not contain value ()()() with n = 3 in iterative");
         }
+
+        [TestMethod]
+        public void BracketPairs_Should_Generate2_N_3()
+        {
+            BracketPairs bp = new BracketPairs();
+
+            var results = bp.GenerateBracketPairs2(3);
+            results.Should().NotBeNull("results should not be null with n = 3 in recursive2");
+            results.Count.Should().Be(5, "results should have exactly 5 results with n = 3 in recursive2");
+            results.Contains("((()))").Should().BeTrue("results does not contain value ((())) with n = 3 in recursive2");
+            results.Contains("(())()").Should().BeTrue("results does not contain value (())() with n = 3 in recursive2");
+            results.Contains("()(())").Should().BeTrue("results does not contain ()(()) with n = 3 in recursive2");
+            results.Contains("(()())").Should().BeTrue("results does not contain value (()()) with n = 3 in recursive2");
+            results.Contains("()()()").Should().BeTrue("results does not contain value ()()() with n = 3 in recursive2");
+        }
+
+        [TestMethod]
+        public void BracketPairs_Should_Generate2_N_2()
+        {
+            BracketPairs bp = new BracketPairs();
+
+            var results = bp.GenerateBracketPairs2(2);
+            results.Should().NotBeNull("results should not be null with n = 2 in recursive2");
+            results.Count.Should().Be(2, "results should have exactly 2 results with n = 2 in recursive2");
+            results.Contains("(())").Should().BeTrue("results does not contain value (()) with n = 2 in recursive2");
+            results.Contains("()()").Should().BeTrue("results does not contain value ()() with n = 2 in recursive2");
+        }
     }
 }

@@ -107,5 +107,36 @@ namespace Algorithms
                 }
             }
         }
+
+        public List<string> GenerateBracketPairs2(int n)
+        {
+            if (n == 0)
+            {
+                return new List<string>();
+            }
+
+            if (n == 1)
+            {
+                return new List<string>() { "()" };
+            }
+
+            var lastValues = GenerateBracketPairs2(n - 1);
+            var values = new List<string>();
+            foreach (var value in lastValues)
+            {
+                values.Add(string.Format("({0})", value));
+
+                var rightValue = string.Format("{0}()", value);
+                var leftValue = string.Format("(){0}", value);
+
+                values.Add(leftValue);
+                if (leftValue != rightValue)
+                {
+                    values.Add(rightValue);
+                }
+            }
+
+            return values;
+        }
     }
 }

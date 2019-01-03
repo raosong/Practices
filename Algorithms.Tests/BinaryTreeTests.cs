@@ -87,6 +87,24 @@ namespace Algorithms
         }
 
         [TestMethod]
+        public void BinaryTree_Height_Should_Pass()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            int height = t.GetHeight(root);
+            height.Should().Be(4, "height is incorrect.");
+        }
+
+        [TestMethod]
+        public void BinaryTree_Diameter_Should_Pass()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            int d = t.GetDiameter(root);
+            d.Should().Be(6, "diameter is incorrect.");
+        }
+
+        [TestMethod]
         public void BinaryTree_LongestPath_Should_Pass()
         {
             var root = this.CreateTestTree();
@@ -99,6 +117,79 @@ namespace Algorithms
             {
                 result[i].Should().Be(expected[i], "Incorrect result at position {0}", i);
             }
+        }
+
+        [TestMethod]
+        public void BinaryTree_LongestPath2_Should_Pass()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            var result = t.GetLongestPath2(root);
+            result.Should().NotBeNull("result should not be null.");
+            result.Count.Should().Be(4, "Incorrect number of items in the longest path.");
+            List<int> expected = new List<int> { 1, 2, 5, 7 };
+            for (int i = 0; i < 4; i++)
+            {
+                result[i].Should().Be(expected[i], "Incorrect result at position {0}", i);
+            }
+        }
+
+        [TestMethod]
+        public void BinaryTree_FindPath_Leaf()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            var result = t.FindPath(root, 6);
+            result.Should().NotBeNull("result should not be null.");
+            result.Count.Should().Be(3, "Incorrect number of items in the longest path.");
+            List<int> expected = new List<int> { 1, 3, 6 };
+            for (int i = 0; i < 3; i++)
+            {
+                result[i].Should().Be(expected[i], "Incorrect result at position {0}", i);
+            }
+        }
+
+        [TestMethod]
+        public void BinaryTree_FindPath_InnerNode()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            var result = t.FindPath(root, 5);
+            result.Should().NotBeNull("result should not be null.");
+            result.Count.Should().Be(3, "Incorrect number of items in the longest path.");
+            List<int> expected = new List<int> { 1, 2, 5 };
+            for (int i = 0; i < 3; i++)
+            {
+                result[i].Should().Be(expected[i], "Incorrect result at position {0}", i);
+            }
+        }
+
+        [TestMethod]
+        public void BinaryTree_FindPath_NotExist()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            var result = t.FindPath(root, 8);
+            result.Should().BeNull("result should be null.");
+        }
+
+        [TestMethod]
+        public void BinaryTree_LCA()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            var result = t.LCA(root, 4, 7);
+            result.Should().NotBeNull("result should not be null.");
+            result.Value.Should().Be(2, "Incorrect LCA.");
+        }
+
+        [TestMethod]
+        public void BinaryTree_LCA_NotExist()
+        {
+            var root = this.CreateTestTree();
+            var t = new BinaryTree<int>(root);
+            var result = t.LCA(root, 8, 10);
+            result.Should().BeNull("result should be null.");
         }
 
         /*          

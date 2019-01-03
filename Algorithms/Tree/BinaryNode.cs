@@ -18,5 +18,12 @@ namespace Algorithms
             this.Left = left;
             this.Right = right;
         }
+
+        public BinaryNode(T value)
+        {
+            this.Value = value;
+            this.Left = null;
+            this.Right = null;
+        }
     }
 }

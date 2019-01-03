@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,6 +114,37 @@ namespace Algorithms
             }
         }
 
+        public int GetHeight(BinaryNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            else
+            {
+                int leftHeight = GetHeight(root.Left);
+                int rightHeight = GetHeight(root.Right);
+                return Math.Max(leftHeight, rightHeight) + 1;
+            }
+        }
+
+        public int GetDiameter(BinaryNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            int leftHeight = this.GetHeight(root.Left);
+            int rightHeight = this.GetHeight(root.Right);
+
+            int leftDiameter = this.GetDiameter(root.Left);
+            int rightDiameter = this.GetDiameter(root.Right);
+
+            return Math.Max(leftHeight + rightHeight + 1, Math.Max(leftDiameter, rightDiameter));
+        }
+
+
         public int GetDepth(AlgorithmType algType)
         {
             int maxLevel = 0;
@@ -218,6 +250,106 @@ namespace Algorithms
             {
                 GetLongestPath(root.Right, new List<T>(path), ref longestPath);
             }
+        }
+
+        public List<T> GetLongestPath2(BinaryNode<T> root)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+
+            var leftLongestPath = GetLongestPath2(root.Left);
+            var rightLongestPath = GetLongestPath2(root.Right);
+
+            int leftLength = leftLongestPath == null ? 0 : leftLongestPath.Count;
+            int rightLength = rightLongestPath == null ? 0 : rightLongestPath.Count;
+
+            if (leftLength > rightLength)
+            {
+                leftLongestPath = leftLongestPath ?? new List<T>();
+                leftLongestPath.Insert(0, root.Value);
+                return leftLongestPath;
+            }
+            else
+            {
+                rightLongestPath = rightLongestPath ?? new List<T>();
+                rightLongestPath.Insert(0, root.Value);
+                return rightLongestPath;
+            }
+        }
+
+        public List<T> FindPath(BinaryNode<T> root, T value)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+            else
+            {
+                Debug.WriteLine("Node Value: {0}", root.Value);
+            }
+
+            if (root.Value.CompareTo(value) == 0)
+            {
+                return new List<T>() { value };
+            }
+
+            var left = FindPath(root.Left, value);
+            if (left != null)
+            {
+                left.Insert(0, root.Value);
+                return left;
+            }
+
+            var right = FindPath(root.Right, value);
+            if (right != null)
+            {
+                right.Insert(0, root.Value);
+                return right;
+            }
+
+            return null;
+        }
+
+        // Only work when both value1 and value2 exist or not exist.
+        // Does not work if only one of the values exists
+        public BinaryNode<T> LCA(BinaryNode<T> root, T value1, T value2)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+            else
+            {
+                Debug.WriteLine("Node Value: {0}", root.Value);
+            }
+
+            if (root.Value.CompareTo(value1) == 0 || root.Value.CompareTo(value2) == 0)
+            {
+                return root;
+            }
+
+            var left = LCA(root.Left, value1, value2);
+            var right = LCA(root.Right, value1, value2);
+            if (left != null && right != null)
+            {
+                return root;
+            }
+            else
+            {
+                if (left != null)
+                {
+                    return root.Left;
+                }
+
+                if (right != null)
+                {
+                    return root.Right;
+                }
+            }
+
+            return null;
         }
     }
 }
