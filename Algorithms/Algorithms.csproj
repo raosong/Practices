@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmType.cs" />
+    <Compile Include="BackTracking\ChessQueen.cs" />
     <Compile Include="BinarySearch\BinarySearch.cs" />
     <Compile Include="BracketPairs\BracketPairs.cs" />
+    <Compile Include="DP\SubSetSum.cs" />
+    <Compile Include="DP\SimpleSum.cs" />
     <Compile Include="Factorial\Factorial.cs" />
     <Compile Include="Fibonacii\Fib.cs" />
     <Compile Include="LinkedList\SingleList.cs" />

@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinarySearchTests.cs" />
+    <Compile Include="ChessQueenTests.cs" />
+    <Compile Include="SubSetSumTests.cs" />
+    <Compile Include="SimpleSumTests.cs" />
     <Compile Include="FibTests.cs" />
     <Compile Include="FactorialTests.cs" />
     <Compile Include="BracketPairsTests.cs" />
